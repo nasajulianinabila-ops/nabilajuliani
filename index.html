@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalkulator Aritmatika</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5" style="max-width: 520px;">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white text-center py-3">
+        <h3 class="mb-1">Kalkulator Aritmatika</h3>
+        <div class="fs-5">Nabila Nasa Juliani - NIM. 262302003</div>
+      </div>
+      <div class="card-body p-4">
+        <div class="mb-3">
+          <label for="angka1" class="form-label">Angka Pertama</label>
+          <input type="number" id="angka1" class="form-control form-control-lg" placeholder="Masukkan angka">
+        </div>
+        <div class="mb-3">
+          <label for="angka2" class="form-label">Angka Kedua</label>
+          <input type="number" id="angka2" class="form-control form-control-lg" placeholder="Masukkan angka">
+        </div>
+        <div class="mb-3">
+          <label for="operator" class="form-label">Pilih Operator</label>
+          <select id="operator" class="form-select form-select-lg">
+            <option value="+">Penjumlahan (+)</option>
+            <option value="-">Pengurangan (-)</option>
+            <option value="*">Perkalian (*)</option>
+            <option value="/">Pembagian (/)</option>
+            <option value="%">Modulus (%)</option>
+            <option value="**">Pangkat (**)</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg w-100 mb-4" onclick="hitung()">Hitung</button>
+
+        <div class="bg-dark text-white text-center rounded p-4">
+          <div class="fs-5">HASIL PERHITUNGAN</div>
+          <div class="display-5 fw-bold" id="hasil">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function hitung() {
+      const a = parseFloat(document.getElementById('angka1').value);
+      const b = parseFloat(document.getElementById('angka2').value);
+      const op = document.getElementById('operator').value;
+      const hasil = document.getElementById('hasil');
+
+      if (isNaN(a) || isNaN(b)) {
+        hasil.textContent = 'Isi kedua angka';
+        return;
+      }
+
+      let r;
+      switch (op) {
+        case '+':  r = a + b; break;
+        case '-':  r = a - b; break;
+        case '*':  r = a * b; break;
+        case '/':  r = b === 0 ? 'Tidak bisa dibagi 0' : a / b; break;
+        case '%':  r = b === 0 ? 'Tidak bisa dibagi 0' : a % b; break;
+        case '**': r = a ** b; break;
+      }
+      hasil.textContent = r;
+    }
+  </script>
+</body>
+  </html>
